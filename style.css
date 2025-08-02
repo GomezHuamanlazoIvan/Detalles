@@ -1,0 +1,653 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    font-family: 'Georgia', serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Tulipanes azules flotantes de fondo */
+.hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.heart {
+    position: absolute;
+    width: 16px;
+    height: 25px;
+    background: linear-gradient(135deg, #4a90e2, #2c5aa0);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: float 6s ease-in-out infinite;
+    opacity: 0.8;
+    box-shadow: 0 2px 8px rgba(74, 144, 226, 0.3);
+}
+
+.heart:before {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 15px;
+    background: linear-gradient(to bottom, #2d5016, #4a7c59);
+    border-radius: 2px;
+}
+
+.heart:after {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: 3px;
+    width: 10px;
+    height: 8px;
+    background: linear-gradient(135deg, #6bb6ff, #4a90e2);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    box-shadow: 0 1px 4px rgba(107, 182, 255, 0.4);
+}
+
+/* Posiciones y delays aleatorios para los tulipanes */
+.heart:nth-child(1) { left: 5%; animation-delay: 0s; animation-duration: 8s; }
+.heart:nth-child(2) { left: 15%; animation-delay: 1s; animation-duration: 7s; }
+.heart:nth-child(3) { left: 25%; animation-delay: 2s; animation-duration: 9s; }
+.heart:nth-child(4) { left: 35%; animation-delay: 0.5s; animation-duration: 6s; }
+.heart:nth-child(5) { left: 45%; animation-delay: 1.5s; animation-duration: 8s; }
+.heart:nth-child(6) { left: 55%; animation-delay: 3s; animation-duration: 7s; }
+.heart:nth-child(7) { left: 65%; animation-delay: 2.5s; animation-duration: 9s; }
+.heart:nth-child(8) { left: 75%; animation-delay: 1s; animation-duration: 6s; }
+.heart:nth-child(9) { left: 85%; animation-delay: 0s; animation-duration: 8s; }
+.heart:nth-child(10) { left: 95%; animation-delay: 2s; animation-duration: 7s; }
+.heart:nth-child(11) { left: 10%; animation-delay: 4s; animation-duration: 9s; }
+.heart:nth-child(12) { left: 20%; animation-delay: 3s; animation-duration: 6s; }
+.heart:nth-child(13) { left: 30%; animation-delay: 1s; animation-duration: 8s; }
+.heart:nth-child(14) { left: 40%; animation-delay: 2s; animation-duration: 7s; }
+.heart:nth-child(15) { left: 50%; animation-delay: 0.5s; animation-duration: 9s; }
+.heart:nth-child(16) { left: 60%; animation-delay: 3.5s; animation-duration: 6s; }
+.heart:nth-child(17) { left: 70%; animation-delay: 1.5s; animation-duration: 8s; }
+.heart:nth-child(18) { left: 80%; animation-delay: 4s; animation-duration: 7s; }
+.heart:nth-child(19) { left: 90%; animation-delay: 2.5s; animation-duration: 9s; }
+.heart:nth-child(20) { left: 12%; animation-delay: 0.8s; animation-duration: 6s; }
+.heart:nth-child(21) { left: 8%; animation-delay: 2.2s; animation-duration: 7s; }
+.heart:nth-child(22) { left: 18%; animation-delay: 3.8s; animation-duration: 8s; }
+.heart:nth-child(23) { left: 28%; animation-delay: 1.3s; animation-duration: 6s; }
+.heart:nth-child(24) { left: 38%; animation-delay: 4.5s; animation-duration: 9s; }
+.heart:nth-child(25) { left: 48%; animation-delay: 0.7s; animation-duration: 7s; }
+.heart:nth-child(26) { left: 58%; animation-delay: 2.8s; animation-duration: 8s; }
+.heart:nth-child(27) { left: 68%; animation-delay: 1.8s; animation-duration: 6s; }
+.heart:nth-child(28) { left: 78%; animation-delay: 3.3s; animation-duration: 9s; }
+.heart:nth-child(29) { left: 88%; animation-delay: 0.3s; animation-duration: 7s; }
+.heart:nth-child(30) { left: 98%; animation-delay: 4.2s; animation-duration: 8s; }
+.heart:nth-child(31) { left: 3%; animation-delay: 1.7s; animation-duration: 6s; }
+.heart:nth-child(32) { left: 13%; animation-delay: 3.1s; animation-duration: 9s; }
+.heart:nth-child(33) { left: 23%; animation-delay: 0.9s; animation-duration: 7s; }
+.heart:nth-child(34) { left: 33%; animation-delay: 2.4s; animation-duration: 8s; }
+.heart:nth-child(35) { left: 43%; animation-delay: 4.1s; animation-duration: 6s; }
+.heart:nth-child(36) { left: 53%; animation-delay: 1.2s; animation-duration: 9s; }
+.heart:nth-child(37) { left: 63%; animation-delay: 3.7s; animation-duration: 7s; }
+.heart:nth-child(38) { left: 73%; animation-delay: 0.4s; animation-duration: 8s; }
+.heart:nth-child(39) { left: 83%; animation-delay: 2.9s; animation-duration: 6s; }
+.heart:nth-child(40) { left: 93%; animation-delay: 1.6s; animation-duration: 9s; }
+.heart:nth-child(41) { left: 7%; animation-delay: 3.4s; animation-duration: 7s; }
+.heart:nth-child(42) { left: 17%; animation-delay: 0.6s; animation-duration: 8s; }
+.heart:nth-child(43) { left: 27%; animation-delay: 2.1s; animation-duration: 6s; }
+.heart:nth-child(44) { left: 37%; animation-delay: 4.3s; animation-duration: 9s; }
+.heart:nth-child(45) { left: 47%; animation-delay: 1.4s; animation-duration: 7s; }
+.heart:nth-child(46) { left: 57%; animation-delay: 3.6s; animation-duration: 8s; }
+.heart:nth-child(47) { left: 67%; animation-delay: 0.8s; animation-duration: 6s; }
+.heart:nth-child(48) { left: 77%; animation-delay: 2.7s; animation-duration: 9s; }
+.heart:nth-child(49) { left: 87%; animation-delay: 4.4s; animation-duration: 7s; }
+.heart:nth-child(50) { left: 97%; animation-delay: 1.1s; animation-duration: 8s; }
+.heart:nth-child(51) { left: 2%; animation-delay: 3.9s; animation-duration: 6s; }
+.heart:nth-child(52) { left: 12%; animation-delay: 0.2s; animation-duration: 9s; }
+.heart:nth-child(53) { left: 22%; animation-delay: 2.6s; animation-duration: 7s; }
+.heart:nth-child(54) { left: 32%; animation-delay: 4.7s; animation-duration: 8s; }
+.heart:nth-child(55) { left: 42%; animation-delay: 1.9s; animation-duration: 6s; }
+.heart:nth-child(56) { left: 52%; animation-delay: 3.2s; animation-duration: 9s; }
+.heart:nth-child(57) { left: 62%; animation-delay: 0.1s; animation-duration: 7s; }
+.heart:nth-child(58) { left: 72%; animation-delay: 2.3s; animation-duration: 8s; }
+.heart:nth-child(59) { left: 82%; animation-delay: 4.6s; animation-duration: 6s; }
+.heart:nth-child(60) { left: 92%; animation-delay: 1.8s; animation-duration: 9s; }
+.heart:nth-child(61) { left: 6%; animation-delay: 3.5s; animation-duration: 7s; }
+.heart:nth-child(62) { left: 16%; animation-delay: 0.7s; animation-duration: 8s; }
+.heart:nth-child(63) { left: 26%; animation-delay: 2.2s; animation-duration: 6s; }
+.heart:nth-child(64) { left: 36%; animation-delay: 4.8s; animation-duration: 9s; }
+.heart:nth-child(65) { left: 46%; animation-delay: 1.5s; animation-duration: 7s; }
+.heart:nth-child(66) { left: 56%; animation-delay: 3.7s; animation-duration: 8s; }
+.heart:nth-child(67) { left: 66%; animation-delay: 0.9s; animation-duration: 6s; }
+.heart:nth-child(68) { left: 76%; animation-delay: 2.8s; animation-duration: 9s; }
+.heart:nth-child(69) { left: 86%; animation-delay: 4.5s; animation-duration: 7s; }
+.heart:nth-child(70) { left: 96%; animation-delay: 1.3s; animation-duration: 8s; }
+.heart:nth-child(71) { left: 4%; animation-delay: 3.8s; animation-duration: 6s; }
+.heart:nth-child(72) { left: 14%; animation-delay: 0.4s; animation-duration: 9s; }
+.heart:nth-child(73) { left: 24%; animation-delay: 2.5s; animation-duration: 7s; }
+.heart:nth-child(74) { left: 34%; animation-delay: 4.9s; animation-duration: 8s; }
+.heart:nth-child(75) { left: 44%; animation-delay: 1.7s; animation-duration: 6s; }
+.heart:nth-child(76) { left: 54%; animation-delay: 3.3s; animation-duration: 9s; }
+.heart:nth-child(77) { left: 64%; animation-delay: 0.5s; animation-duration: 7s; }
+.heart:nth-child(78) { left: 74%; animation-delay: 2.9s; animation-duration: 8s; }
+.heart:nth-child(79) { left: 84%; animation-delay: 4.1s; animation-duration: 6s; }
+.heart:nth-child(80) { left: 94%; animation-delay: 1.2s; animation-duration: 9s; }
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(0deg) scale(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    50% {
+        transform: translateY(50vh) rotate(5deg) scale(1);
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-100px) rotate(-5deg) scale(1);
+        opacity: 0;
+    }
+}
+
+/* Tarjeta principal */
+.card {
+    background: rgba(40, 40, 60, 0.95);
+    border: 2px solid #ff6b9d;
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    max-width: 450px;
+    width: 90%;
+    box-shadow: 0 20px 40px rgba(255, 107, 157, 0.3);
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 2;
+    animation: cardGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes cardGlow {
+    0% {
+        box-shadow: 0 20px 40px rgba(255, 107, 157, 0.3);
+    }
+    100% {
+        box-shadow: 0 25px 50px rgba(255, 107, 157, 0.5);
+    }
+}
+
+.title {
+    color: #ff6b9d;
+    font-size: 2.2em;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(255, 107, 157, 0.5);
+    animation: titlePulse 2s ease-in-out infinite;
+}
+
+@keyframes titlePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.date {
+    color: #e0e0e0;
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    opacity: 0.8;
+}
+
+/* Tulipán azul central */
+.bouquet-container {
+    margin: 30px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.tulip {
+    position: relative;
+    width: 60px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: tulipFloat 4s ease-in-out infinite;
+}
+
+@keyframes tulipFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(1deg); }
+}
+
+.tulip-flower {
+    width: 35px;
+    height: 45px;
+    background: linear-gradient(135deg, #4a90e2, #2c5aa0);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.5);
+    animation: tulipGlow 3s ease-in-out infinite;
+    position: relative;
+}
+
+.tulip-flower:before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 6px;
+    width: 23px;
+    height: 15px;
+    background: linear-gradient(135deg, #6bb6ff, #4a90e2);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    box-shadow: 0 2px 8px rgba(107, 182, 255, 0.4);
+}
+
+@keyframes tulipGlow {
+    0%, 100% {
+        box-shadow: 0 4px 15px rgba(74, 144, 226, 0.5);
+        transform: scale(1);
+    }
+    50% {
+        box-shadow: 0 6px 25px rgba(74, 144, 226, 0.8);
+        transform: scale(1.05);
+    }
+}
+
+.tulip-stem {
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5px;
+    height: 35px;
+    background: linear-gradient(to bottom, #2d5016, #4a7c59);
+    border-radius: 3px;
+}
+
+/* Mensajes de texto */
+.message-line1 {
+    color: #e0e0e0;
+    font-size: 1.1em;
+    margin: 25px 0 15px 0;
+    line-height: 1.4;
+    opacity: 0.9;
+}
+
+.message-line2 {
+    color: #ff6b9d;
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    line-height: 1.4;
+    font-style: italic;
+    text-shadow: 0 0 5px rgba(255, 107, 157, 0.3);
+}
+
+/* Botón interactivo */
+.love-button {
+    background: linear-gradient(45deg, #ff6b9d, #ff8fab);
+    border: none;
+    border-radius: 25px;
+    padding: 15px 30px;
+    color: white;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 107, 157, 0.4);
+    font-family: inherit;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+}
+
+.love-button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(255, 107, 157, 0.6);
+    background: linear-gradient(45deg, #ff8fab, #ffa8cc);
+}
+
+.love-button:active {
+    transform: translateY(-1px) scale(1.02);
+}
+
+.heart-icon {
+    margin-right: 8px;
+    display: inline-block;
+    animation: heartBeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    25%, 75% { transform: scale(1.1); }
+    50% { transform: scale(1.2); }
+}
+
+/* Mensaje de amor oculto */
+.love-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('images/fondo.jpg') center/cover no-repeat;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.love-message::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: -1;
+}
+
+.love-message.show {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.message-content {
+    background: rgba(255, 107, 157, 0.9);
+    padding: clamp(20px, 4vw, 40px);
+    border-radius: 20px;
+    text-align: center;
+    max-width: 600px;
+    width: 90%;
+    max-height: 95vh;
+    color: white;
+    box-shadow: 0 20px 40px rgba(255, 107, 157, 0.6);
+    animation: messageSlideIn 0.8s ease-out;
+    backdrop-filter: blur(10px);
+    overflow: visible;
+}
+
+.image-carousel {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    height: 70vh;
+    min-height: 600px;
+    margin: 0 auto 20px;
+    perspective: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+}
+
+.carousel-track {
+    position: relative;
+    width: 350px;
+    height: 600px;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease-in-out;
+}
+
+.love-image {
+    position: absolute;
+    width: 350px;
+    height: 600px;
+    object-fit: contain;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.8s ease-in-out;
+    backface-visibility: hidden;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.love-image.active {
+    transform: translateZ(0) scale(1);
+    opacity: 1;
+    z-index: 10;
+    box-shadow: 0 20px 50px rgba(255, 107, 157, 0.4);
+}
+
+.love-image.prev {
+    transform: translateX(-80px) translateZ(-120px) rotateY(25deg) scale(0.8);
+    opacity: 0.7;
+    z-index: 5;
+}
+
+.love-image.next {
+    transform: translateX(80px) translateZ(-120px) rotateY(-25deg) scale(0.8);
+    opacity: 0.7;
+    z-index: 5;
+}
+
+@media (max-width: 768px) {
+    .image-carousel {
+        height: 60vh;
+        min-height: 500px;
+        max-width: 350px;
+    }
+    
+    .carousel-track {
+        width: 300px;
+        height: 500px;
+    }
+    
+    .love-image {
+        width: 300px;
+        height: 500px;
+    }
+    
+    .love-image.prev {
+        transform: translateX(-70px) translateZ(-80px) rotateY(20deg) scale(0.75);
+    }
+    
+    .love-image.next {
+        transform: translateX(70px) translateZ(-80px) rotateY(-20deg) scale(0.75);
+    }
+}
+
+@media (max-width: 480px) {
+    .image-carousel {
+        height: 50vh;
+        min-height: 400px;
+        max-width: 280px;
+    }
+    
+    .carousel-track {
+        width: 250px;
+        height: 400px;
+    }
+    
+    .love-image {
+        width: 250px;
+        height: 400px;
+    }
+}
+
+.love-image.hidden {
+    transform: translateZ(-200px) scale(0.6);
+    opacity: 0.3;
+    z-index: 1;
+}
+
+.carousel-controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.carousel-controls button {
+    background: rgba(255, 255, 255, 0.3);
+    border: 2px solid white;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-controls button:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+    animation: buttonPulse 0.6s ease-in-out;
+}
+
+@keyframes buttonPulse {
+    0%, 100% {
+        transform: scale(1.1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+#loveText {
+    transition: all 0.5s ease-in-out;
+    animation: textFade 0.8s ease-in-out;
+}
+
+@keyframes textFade {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes messageSlideIn {
+    from {
+        transform: translateY(-50px) scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.message-content h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.message-content p {
+    font-size: 1.2em;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+.message-content button {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid white;
+    border-radius: 15px;
+    padding: 12px 25px;
+    color: white;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.message-content button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+/* Efectos responsivos */
+@media (max-width: 768px) {
+    .card {
+        padding: 30px 20px;
+        margin: 20px;
+    }
+    
+    .title {
+        font-size: 1.8em;
+    }
+    
+    .message-line1,
+    .message-line2 {
+        font-size: 1em;
+    }
+    
+    .tulip {
+        width: 50px;
+        height: 70px;
+    }
+    
+    .tulip-flower {
+        width: 30px;
+        height: 40px;
+    }
+}
+
+/* Animaciones adicionales */
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Efecto de partículas en hover del botón */
+.love-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.love-button:hover::before {
+    left: 100%;
+}
