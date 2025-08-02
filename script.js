@@ -181,16 +181,24 @@ function updateCarousel() {
 // Función para actualizar el mensaje según la imagen actual
 function updateMessage() {
     const currentImage = images[currentImageIndex];
+    const title = currentImage.getAttribute('data-title');
     const message = currentImage.getAttribute('data-message');
+    const loveTitle = document.getElementById('loveTitle');
     const loveText = document.getElementById('loveText');
     
+    loveTitle.style.opacity = '0';
+    loveTitle.style.transform = 'translateY(10px)';
     loveText.style.opacity = '0';
     loveText.style.transform = 'translateY(10px)';
     
     setTimeout(() => {
+        loveTitle.textContent = title;
         loveText.textContent = message;
+        loveTitle.style.opacity = '1';
+        loveTitle.style.transform = 'translateY(0)';
         loveText.style.opacity = '1';
         loveText.style.transform = 'translateY(0)';
+        loveTitle.style.animation = 'textFade 0.8s ease-in-out';
         loveText.style.animation = 'textFade 0.8s ease-in-out';
     }, 400);
 }
@@ -212,8 +220,12 @@ document.addEventListener('DOMContentLoaded', function() {
     if (prevBtn) prevBtn.addEventListener('click', () => { prevImage(); pauseAutoSlide(); });
     if (nextBtn) nextBtn.addEventListener('click', () => { nextImage(); pauseAutoSlide(); });
     
-    // Inicializar transición del texto
+    // Inicializar transición del texto y título
+    const loveTitle = document.getElementById('loveTitle');
     const loveText = document.getElementById('loveText');
+    if (loveTitle) {
+        loveTitle.style.transition = 'all 0.5s ease-in-out';
+    }
     if (loveText) {
         loveText.style.transition = 'all 0.5s ease-in-out';
     }
